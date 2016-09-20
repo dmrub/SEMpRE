@@ -132,7 +132,7 @@ public class SceneGraphListener extends LDrawParserBaseListener
 			freshSceneNodeAsset = sceneGraphModel.createResource();
 		
 		this.sceneGraphModel.add(freshSceneNodeCS, RDF.type, SCENEGRAPH.Component);
-		this.sceneGraphModel.add(freshSceneNodeCS, RDF.type, ADMS.Asset);
 		this.sceneGraphModel.add(freshSceneNode, SCENEGRAPH.nodeComponent, freshSceneNodeAsset);
+		this.sceneGraphModel.add(freshSceneNodeAsset, RDF.type, ADMS.Asset);
 	}
 }
