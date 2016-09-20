@@ -43,7 +43,7 @@ public class SceneGraphListener extends LDrawParserBaseListener
 		sceneGraphModel.setNsPrefix("rdfs", RDFS.getURI());
 		sceneGraphModel.setNsPrefix("xsd", XSD.NS);
 		sceneGraphModel.setNsPrefix("ldraw", "http://www.ldraw.org/ns/ldraw#");
-		
+		sceneGraphModel.setNsPrefixes(ADMS.NAMESPACE);
 		sceneGraphModel.setNsPrefix("vom", "http://vocab.arvida.de/2015/06/vom/vocab#");	
 		sceneGraphModel.setNsPrefix("maths", "http://vocab.arvida.de/2015/06/maths/vocab#");	
 		sceneGraphModel.setNsPrefix("spatial", "http://vocab.arvida.de/2015/06/spatial/vocab#");	
