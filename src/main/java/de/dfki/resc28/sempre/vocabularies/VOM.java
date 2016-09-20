@@ -45,7 +45,7 @@ public final class VOM
     /**
      * Vocabulary namespace URI as string 
      */
-    private static final String NS = "http://vocab.arvida.de/ns/vom#";
+    private static final String NS = "http://vocab.arvida.de/2015/06/vom/vocab#";
 
     /**
      * Local and namespace names of RDF(S) properties as strings 

@@ -65,7 +65,7 @@ public final class SPATIAL
     /**
      * Vocabulary namespace URI as string 
      */
-    private static final String NS = "http://vocab.arvida.de/ns/spatial#";
+    private static final String NS = "http://vocab.arvida.de/2015/06/spatial/vocab#";
 
     /**
      * Local and namespace names of RDF(S) classes as strings 

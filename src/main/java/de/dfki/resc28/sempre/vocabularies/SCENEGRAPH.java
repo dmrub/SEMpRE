@@ -77,7 +77,7 @@ public final class SCENEGRAPH
     /**
      * Vocabulary namespace URI as string 
      */
-    private static final String NS = "http://vocab.arvida.de/2015/06/scenegraph/vocab";
+    private static final String NS = "http://vocab.arvida.de/2015/06/scenegraph/vocab#";
 
     /**
      * Local and namespace names of RDF(S) classes as strings 

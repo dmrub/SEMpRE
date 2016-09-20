@@ -68,7 +68,7 @@ public final class MATHS
     /**
      * Vocabulary namespace URI as string 
      */
-    private static final String NS = "http://vocab.arvida.de/ns/maths#";
+    private static final String NS = "http://vocab.arvida.de/2015/06/maths/vocab#";
 
     /**
      * Local and namespace names of RDF(S) classes as strings 
