@@ -141,7 +141,7 @@ public class SceneGraphListener extends LDrawParserBaseListener
 		
 		if (ctx.colour() != null)
 		{
-			Resource freshSceneNodeColour = sceneGraphModel.createResource(Util.appendSegmentToPath("http://cluster-frontend/storage/ns/colors#", ctx.colour().getText()));
+			Resource freshSceneNodeColour = sceneGraphModel.createResource(Util.joinPath("http://cluster-frontend/storage/ns/colors#", ctx.colour().getText()));
 			this.sceneGraphModel.add(freshSceneNode, SCENEGRAPH.material, freshSceneNodeColour);
 		}
 		
