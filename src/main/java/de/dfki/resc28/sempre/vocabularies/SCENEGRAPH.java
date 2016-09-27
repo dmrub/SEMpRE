@@ -29,6 +29,7 @@ public final class SCENEGRAPH
   /** 
    * Properties as org.apache.jena.rdf.model.Property
    */
+  public static final Property material = property(CONSTANTS.PROP_material);
   public static final Property renderedGroupChild = property(CONSTANTS.PROP_renderedGroupChild);
   public static final Property overwrittenProperty = property(CONSTANTS.PROP_overwrittenProperty);
   public static final Property propagates = property(CONSTANTS.PROP_propagates);
@@ -145,6 +146,9 @@ public final class SCENEGRAPH
     private static final String PROP_LNAME_materialOverwriteGroupParentOf = "materialOverwriteGroupParentOf";
     private static final String PROP_materialOverwriteGroupParentOf = nsName(PROP_LNAME_materialOverwriteGroupParentOf);
 
+    private static final String PROP_LNAME_material = "material";
+    private static final String PROP_material = nsName(PROP_LNAME_material);
+    
     /**
      * Returns the full namespace name of a vocabulary element as a string
      * @param localName  the local name of a vocabulary element as a string

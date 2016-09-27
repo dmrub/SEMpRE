@@ -46,7 +46,8 @@ public class SceneGraphListener extends LDrawParserBaseListener
 		sceneGraphModel.setNsPrefixes(ADMS.NAMESPACE);
 		sceneGraphModel.setNsPrefix("vom", "http://vocab.arvida.de/2015/06/vom/vocab#");	
 		sceneGraphModel.setNsPrefix("maths", "http://vocab.arvida.de/2015/06/maths/vocab#");	
-		sceneGraphModel.setNsPrefix("spatial", "http://vocab.arvida.de/2015/06/spatial/vocab#");	
+		sceneGraphModel.setNsPrefix("spatial", "http://vocab.arvida.de/2015/06/spatial/vocab#");
+		sceneGraphModel.setNsPrefix("material", "http://cluster-frontend/storage/ns/colors#");
 		sceneGraphModel.setNsPrefix("vis", "http://vocab.arvida.de/2015/06/visService/vocab#");
 		sceneGraphModel.setNsPrefix("sg", "http://vocab.arvida.de/2015/06/scenegraph/vocab#");
 
@@ -135,5 +136,14 @@ public class SceneGraphListener extends LDrawParserBaseListener
 		this.sceneGraphModel.add(freshSceneNode, SCENEGRAPH.nodeComponent, freshSceneNodeAsset);
 		this.sceneGraphModel.add(freshSceneNodeAsset, RDF.type, SCENEGRAPH.Component);
 		this.sceneGraphModel.add(freshSceneNodeAsset, RDF.type, ADMS.Asset);
+		
+
+		
+		if (ctx.colour() != null)
+		{
+			Resource freshSceneNodeColour = sceneGraphModel.createResource(Util.appendSegmentToPath("http://cluster-frontend/storage/ns/colors#", ctx.colour().getText()));
+			this.sceneGraphModel.add(freshSceneNode, SCENEGRAPH.material, freshSceneNodeColour);
+		}
+		
 	}
 }
