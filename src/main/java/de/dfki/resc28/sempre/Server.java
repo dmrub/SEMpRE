@@ -29,7 +29,9 @@ public class Server extends Application
 		configure();
 			
 		Service modelRepo = new Service();
-		return new HashSet<Object>(Arrays.asList(modelRepo));
+                ForwardedHeaderFilter f = new ForwardedHeaderFilter();
+                WebAppExceptionMapper exm = new WebAppExceptionMapper();
+		return new HashSet<Object>(Arrays.asList(f, modelRepo, exm));
     }
 	
     public static synchronized void configure() 
