@@ -51,6 +51,12 @@ public class Service {
     @Context
     protected UriInfo fRequestUrl;
 
+    private final String fMaterialStorageUri;
+
+    public Service(String materialStorageUri) {
+        this.fMaterialStorageUri = materialStorageUri;
+    }
+
     @GET
     @Path("/")
     @Produces({MediaType.TEXT_HTML})
@@ -129,7 +135,7 @@ public class Service {
         if (uriResponse.getStatusLine().getStatusCode() == 200) {
             DataInputStream input = new DataInputStream(new BufferedInputStream(uriResponse.getEntity().getContent()));
 
-            SceneGraphListener sceneGraphListener = new SceneGraphListener(fRequestUrl.getRequestUri().toString());
+            SceneGraphListener sceneGraphListener = new SceneGraphListener(fRequestUrl.getRequestUri().toString(), fMaterialStorageUri);
 
             LDrawLexer lexer = new LDrawLexer(new ANTLRInputStream(input));
             LDrawParser parser = new LDrawParser(new CommonTokenStream(lexer));

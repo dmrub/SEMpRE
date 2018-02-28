@@ -17,37 +17,31 @@ import de.dfki.resc28.igraphstore.IGraphStore;
 import de.dfki.resc28.igraphstore.jena.FusekiGraphStore;
 import de.dfki.resc28.sempre.services.Service;
 
-
 @ApplicationPath("/")
-public class Server extends Application
-{
+public class Server extends Application {
+
     public static String fOleURI = null;
-    
-	@Override
-    public Set<Object> getSingletons() 
-    {
-		configure();
-			
-		Service modelRepo = new Service();
-                ForwardedHeaderFilter f = new ForwardedHeaderFilter();
-                WebAppExceptionMapper exm = new WebAppExceptionMapper();
-		return new HashSet<Object>(Arrays.asList(f, modelRepo, exm));
+    public static String fMaterialStorageURI = null;
+
+    @Override
+    public Set<Object> getSingletons() {
+        configure();
+
+        Service modelRepo = new Service(fMaterialStorageURI);
+        ForwardedHeaderFilter f = new ForwardedHeaderFilter();
+        WebAppExceptionMapper exm = new WebAppExceptionMapper();
+        return new HashSet<Object>(Arrays.asList(f, modelRepo, exm));
     }
-	
-    public static synchronized void configure() 
-    {
-        try 
-        {
+
+    public static synchronized void configure() {
+        try {
             String configFile = System.getProperty("sempre.configuration");
             java.io.InputStream is;
 
-            if (configFile != null) 
-            {
+            if (configFile != null) {
                 is = new java.io.FileInputStream(configFile);
                 System.out.format("Loading sempre Repo configuration from %s ...%n", configFile);
-            } 
-            else 
-            {
+            } else {
                 is = Server.class.getClassLoader().getResourceAsStream("sempre.properties");
                 System.out.println("Loading sempre Repo configuration from internal resource file ...");
             }
@@ -56,19 +50,19 @@ public class Server extends Application
             p.load(is);
 
             fOleURI = getProperty(p, "oleURI", "sempre.oleURI");
-
-        } 
-        catch (Exception e) 
-        {
+            fMaterialStorageURI = getProperty(p, "materialStorageURI", "sempre.materialStorageURI");
+            if (fMaterialStorageURI == null) {
+                fMaterialStorageURI = "http://cluster-frontend/storage/ns/";
+            }
+            System.out.println("Material Storage URI: "+fMaterialStorageURI);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static String getProperty(java.util.Properties p, String key, String sysKey) 
-    {
+    public static String getProperty(java.util.Properties p, String key, String sysKey) {
         String value = System.getProperty(sysKey);
-        if (value != null) 
-        {
+        if (value != null) {
             return value;
         }
         return p.getProperty(key);
